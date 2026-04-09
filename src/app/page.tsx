@@ -239,7 +239,7 @@ const processSteps = [
   { num: "01", title: "Contact", desc: "Reach out via the form below. We'll schedule a quick call to discuss your needs." },
   { num: "02", title: "Proposal", desc: "Based on our call, you'll receive a custom proposal with pricing and timeline." },
   { num: "03", title: "Deposit", desc: "50% upfront to start. We begin work immediately after payment." },
-  { num: "04", title: "Delivery", desc: "Website delivered in 5 days to 3 weeks. AI agents set up remotely or on-site." },
+  { num: "04", title: "Delivery", desc: "Websites: 5 days to 3 weeks. AI agents: guided 2–3 day setup connecting your tools, configuring workflows, and going live." },
 ];
 
 const pricingTiers = [
@@ -265,8 +265,14 @@ const pricingTiers = [
     price: "$1,500",
     period: "–$7,500",
     calls: "One-time setup",
-    desc: "Your personal AI assistant on a mini PC in your home or office.",
-    features: ["OpenClaw/Hermes agent", "Local + private AI", "Custom workflows", "Voice interface", "Hardware available"],
+    desc: "Your personal AI assistant on a mini PC — runs on a schedule, works while you sleep.",
+    features: [
+      "Connects email, calendar, Slack/WhatsApp",
+      "Automated reports & briefings",
+      "Works on your schedule (cron)",
+      "You approve before anything external sends",
+      "30 days priority support included",
+    ],
   },
 ];
 
@@ -280,6 +286,34 @@ const faqs = [
     a: "I set up an AI assistant (OpenClaw/Hermes) on a small computer (Mac Mini or Linux NUC) that runs in your home or office. It can help with tasks, research, scheduling, and more — completely private, no cloud subscription.",
   },
   {
+    q: "How is this different from just paying for ChatGPT or Claude?",
+    a: "Those are subscription tools you rent access to — $20–30/month, forever. They also don't connect to your email, calendar, or business tools on their own. Hermes is a one-time setup ($1,500–$7,500) that runs on your own hardware and connects to your specific tools — WhatsApp, Google Sheets, Slack, your ERP. It runs on a schedule, acts autonomously when you approve, and works while you sleep. After the upfront cost, there is no monthly fee for the software itself (you pay only for LLM API usage, which is typically $5–30/month depending on volume).",
+  },
+  {
+    q: "Will the AI agent make mistakes?",
+    a: "Yes — like any tool. But it surfaces its confidence. If it sees conflicting data, it says \"I'm not sure about X — do you want to review before I proceed?\" rather than guessing. For anything external (emails, client messages), it drafts first and waits for your approval. The human-in-the-loop means a wrong draft never goes out the door.",
+  },
+  {
+    q: "What if it sends an email to the wrong person?",
+    a: "It's configured to never send external emails without your explicit approval. It drafts first, shows you exactly what it plans to send, and waits for your YES. Nothing goes out until you confirm. You control every external action.",
+  },
+  {
+    q: "How private is my data?",
+    a: "Everything runs on the Mini PC you purchase. Your emails, spreadsheets, messages, and files never leave your hardware unless you explicitly authorize a specific action. The LLM API call does go to an external AI provider — but only the specific prompt content needed for that task, not your full email history. For maximum privacy (medical, legal, highly sensitive data), we can configure a fully air-gapped deployment using a local LLM that never makes external API calls at all.",
+  },
+  {
+    q: "What happens if the hardware fails?",
+    a: "Your configuration is stored in a backup file created during setup. If the Mini PC fails, you replace the hardware, restore from backup, and you're running again within hours. We include a backup verification step during onboarding so you know it works.",
+  },
+  {
+    q: "What's the actual setup process?",
+    a: "Day 1: We connect your tools together — Gmail, Google Sheets, WhatsApp or Slack, Instagram, calendar. You authorize each one (we never see your passwords). Day 2: We configure your first automation together — your morning briefing format, inventory thresholds, report templates. Day 3: Go live. We monitor alongside you for 48 hours to answer questions. 30 days of priority support included.",
+  },
+  {
+    q: "How is this different from Josh.ai or other AI home assistants?",
+    a: "Josh.ai is $29–99/month on an ongoing subscription, focused on home automation. It doesn't connect to your business tools — no email, no spreadsheets, no business reporting. There's no equivalent for Betty's bakery inventory management or Marcus's logistics reporting. And you can't take it with you if you change providers. With HermesB, you own the agent and can host it anywhere.",
+  },
+  {
     q: "Do I need to buy the hardware separately?",
     a: "You can supply your own Mac Mini or Linux mini PC, or I can include one for $450–$700. The hardware is yours to keep forever.",
   },
@@ -290,10 +324,6 @@ const faqs = [
   {
     q: "What if I need changes after the site is done?",
     a: "Landing pages include one revision round. Full websites include two revision rounds. Additional changes after that are billed at an hourly rate.",
-  },
-  {
-    q: "Is the AI agent really private?",
-    a: "Yes — the AI runs locally on your hardware. Your data never goes to the cloud unless you explicitly choose cloud models. No subscriptions, no ongoing data harvesting.",
   },
 ];
 
@@ -481,20 +511,22 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── Stats Bar ─── */}
+      {/* ─── Trust Bar ─── */}
       <section className="bg-white border-b border-gray-200 py-8 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-          {[
-            { label: "Projects Delivered", value: "Growing" },
-            { label: "AI Agents Deployed", value: "Ready" },
-            { label: "Response Time", value: "< 2 hours" },
-            { label: "Satisfaction", value: "100%" },
-          ].map(({ label, value }) => (
-            <div key={label}>
-              <div className="text-2xl font-bold text-gray-900">{value}</div>
-              <div className="text-sm text-gray-500">{label}</div>
-            </div>
-          ))}
+        <div className="max-w-6xl mx-auto">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16 text-center">
+            {[
+              { label: "Pricing", value: "One-time" },
+              { label: "Setup Time", value: "2–3 days" },
+              { label: "Support", value: "30 days included" },
+              { label: "Your Data", value: "Stays local" },
+            ].map(({ label, value }) => (
+              <div key={label}>
+                <div className="text-2xl font-bold text-brand-600">{value}</div>
+                <div className="text-sm text-gray-500">{label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -590,7 +622,7 @@ export default function Home() {
           {/* Tab 2: AI Agents */}
           {activeServiceTab === 2 && (
             <div className="animate-fade-in">
-              <div className="bg-white border border-gray-200 rounded-2xl p-8 md:p-10 mb-8">
+              <div className="bg-purple-50 border border-purple-100 rounded-2xl p-8 md:p-10 mb-8">
                 <div className="flex flex-wrap items-center gap-3 mb-4">
                   <span className="bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-full">
                     AI AGENTS
@@ -604,10 +636,12 @@ export default function Home() {
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    { icon: "🏠", title: "Home Assistant", desc: "Manage schedules, research, smart home control" },
-                    { icon: "💼", title: "Business Assistant", desc: "Lead research, email drafts, task management" },
-                    { icon: "🔒", title: "Privacy First", desc: "Runs locally. No cloud. No data sharing." },
-                    { icon: "🖥️", title: "Your Hardware", desc: "Mac Mini or Linux NUC. You own it forever." },
+                    { icon: "🌅", title: "Morning Briefing", desc: "Wake up to a WhatsApp summary — inventory alerts, today's schedule, urgent emails, and social opportunities. No checking required." },
+                    { icon: "📬", title: "Email Management", desc: "Reads your inbox, drafts replies, flags urgent messages. You approve before anything goes out. Never miss a catering inquiry again." },
+                    { icon: "📅", title: "Scheduling & Reminders", desc: "Checks your calendar, sends 30-min reminders, auto-books appointments, blocks double-bookings. Coordinates with your existing calendar." },
+                    { icon: "📱", title: "Social Media", desc: "Monitors Instagram DMs and comments, drafts replies for your approval, auto-posts scheduled content. Consistent presence without the daily effort." },
+                    { icon: "📊", title: "Reporting Automation", desc: "Consolidates spreadsheets, auto-calculates KPIs, generates reports on a schedule. Marcus's Monday report goes from 4 hours to 15 minutes." },
+                    { icon: "🔒", title: "Private & Local", desc: "Runs on your hardware. Your emails, data, and messages never go to third-party servers. No subscription. You own it forever." },
                   ].map(({ icon, title, desc }) => (
                     <Card key={title} className="flex gap-4">
                       <span className="text-2xl flex-shrink-0">{icon}</span>
@@ -660,8 +694,7 @@ export default function Home() {
             </p>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Simple Plans That Scale</h2>
             <p className="text-gray-500 max-w-xl mx-auto">
-              No setup fees. No hidden costs. Cancel anytime. Most businesses see ROI within the
-              first week.
+              No monthly fees. No subscriptions. You own what we build — forever.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -670,7 +703,7 @@ export default function Home() {
             ))}
           </div>
           <p className="text-center text-sm text-gray-400 mt-6">
-            All plans include a 30-day money-back guarantee. No contracts.
+            You own it. No contracts. No ongoing fees.
           </p>
         </div>
       </section>
