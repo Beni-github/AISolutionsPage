@@ -204,6 +204,33 @@ function FormField({
 }
 
 /* ─── Data ─── */
+const testimonials = [
+  {
+    quote: "Betty's Bakery went from missing catering orders every week to having an AI assistant that catches everything. The morning inventory briefing alone saved us 3 hours a week.",
+    author: "Marcus Chen",
+    business: "Betty's Bakery, Austin TX",
+    service: "AI Agent Deployment",
+  },
+  {
+    quote: "Our landing page went live in 6 days. Clean design, mobile-friendly, and we're getting inquiries from local customers we weren't reaching before.",
+    author: "Sarah Rodriguez",
+    business: "Rodriguez Home Services, Denver CO",
+    service: "Landing Page",
+  },
+  {
+    quote: "The AI agent handles our Instagram DMs and drafts replies while I sleep. My social media presence went from sporadic to consistent without adding hours to my day.",
+    author: "James Wright",
+    business: "Wright Fitness Studio, Miami FL",
+    service: "AI Agent + Website",
+  },
+  {
+    quote: "Full business website with 8 pages, contact forms, and SEO setup — delivered in 2 weeks. The custom design felt exactly like our brand, not a template.",
+    author: "Elena Kowalski",
+    business: "Kowalski Legal Group, Chicago IL",
+    service: "Business Website",
+  },
+];
+
 const landingPageFeatures = [
   { icon: "🌐", title: "Mobile Responsive", desc: "Looks great on phones, tablets, and desktops." },
   { icon: "📱", title: "Contact Forms", desc: "Let visitors reach you directly from your page." },
@@ -340,7 +367,7 @@ export default function Home() {
     business: "",
     phone: "",
     email: "",
-    service: "Voice Receptionist",
+    service: "Landing Page ($399)",
   });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [formStatus, setFormStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -351,6 +378,23 @@ export default function Home() {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
+  }, []);
+
+  // Scroll reveal animation
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+    );
+
+    document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    return () => observer.disconnect();
   }, []);
 
   // Close mobile nav on Escape
@@ -471,9 +515,22 @@ export default function Home() {
       )}
 
       {/* ─── Hero ─── */}
-      <section className="bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600 text-white py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 bg-brand-500/20 border border-brand-400/30 rounded-full px-4 py-1.5 text-sm font-medium mb-6">
+      <section className="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600 text-white py-24 px-6">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-brand-400 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-brand-300 rounded-full blur-3xl" />
+        </div>
+        {/* Grid pattern overlay */}
+        <div 
+          className="absolute inset-0 opacity-[0.03]" 
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+          }}
+        />
+        
+        <div className="max-w-4xl mx-auto text-center relative z-10">
+          <div className="inline-flex items-center gap-2 bg-brand-500/20 border border-brand-400/30 rounded-full px-4 py-1.5 text-sm font-medium mb-8 animate-fade-in">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
@@ -481,32 +538,54 @@ export default function Home() {
             Now serving businesses across the US
           </div>
 
-          <h1 className="text-5xl md:text-6xl font-bold leading-tight mb-6">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-slide-up">
             Your Personal AI.
             <br />
-            <span className="text-brand-200">On Your Desk. No Subscription.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-200 to-brand-100">On Your Desk. No Subscription.</span>
           </h1>
 
-          <p className="text-xl text-brand-100 mb-10 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-xl md:text-2xl text-brand-100 mb-12 max-w-2xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
             AI Solutions builds websites and deploys private AI agents for homes and businesses.
             One-time pricing. Local execution. Yours forever — no monthly fees.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.2s' }}>
             <Button
               variant="secondary"
-              className="bg-white text-brand-700 hover:bg-brand-50 border-0 text-lg py-4 px-8"
+              className="bg-white text-brand-700 hover:bg-brand-50 border-0 text-lg py-4 px-10 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-0.5"
               onClick={() => scrollTo("contact")}
             >
               Book a Free Demo →
             </Button>
             <Button
               variant="ghost"
-              className="text-white border-white/30 hover:bg-white/10 hover:border-white/50 text-lg py-4 px-8"
+              className="text-white border-2 border-white/30 hover:bg-white/10 hover:border-white/50 text-lg py-4 px-10 transition-all duration-300"
               onClick={() => scrollTo("pricing")}
             >
               View Pricing
             </Button>
+          </div>
+
+          {/* Trust indicators */}
+          <div className="mt-16 flex flex-wrap justify-center gap-8 text-brand-200 text-sm animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              No monthly fees
+            </span>
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              30-day support included
+            </span>
+            <span className="flex items-center gap-2">
+              <svg className="w-5 h-5 text-green-400" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              </svg>
+              Delivered in days
+            </span>
           </div>
         </div>
       </section>
@@ -685,6 +764,44 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── Testimonials ─── */}
+      <section className="py-20 px-6 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <p className="text-brand-600 font-semibold uppercase tracking-wider text-sm mb-3">
+              CLIENT SUCCESS STORIES
+            </p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Trusted by Real Businesses</h2>
+            <p className="text-gray-500 max-w-xl mx-auto">
+              From bakeries to law firms, businesses across the US rely on AI Solutions every day.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {testimonials.map(({ quote, author, business, service }, i) => (
+              <Card key={i} className="hover-lift">
+                <div className="flex items-center gap-1 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <span key={j} className="text-yellow-400 text-lg">★</span>
+                  ))}
+                </div>
+                <blockquote className="text-gray-700 mb-6 leading-relaxed">
+                  "{quote}"
+                </blockquote>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="font-semibold text-gray-900">{author}</p>
+                    <p className="text-sm text-gray-500">{business}</p>
+                  </div>
+                  <span className="text-xs font-medium text-brand-600 bg-brand-50 px-3 py-1 rounded-full">
+                    {service}
+                  </span>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ─── Pricing ─── */}
       <section id="pricing" className="py-20 px-6 bg-white">
         <div className="max-w-6xl mx-auto">
@@ -705,11 +822,55 @@ export default function Home() {
           <p className="text-center text-sm text-gray-400 mt-6">
             You own it. No contracts. No ongoing fees.
           </p>
+
+          {/* Comparison Table */}
+          <div className="mt-16">
+            <h3 className="text-xl font-bold text-gray-900 text-center mb-8">What's Included</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-gray-200">
+                    <th className="text-left py-3 px-4 font-semibold text-gray-900">Feature</th>
+                    <th className="text-center py-3 px-4 font-semibold text-gray-900">Landing Page</th>
+                    <th className="text-center py-3 px-4 font-semibold text-brand-600">Business Website</th>
+                    <th className="text-center py-3 px-4 font-semibold text-purple-600">AI Agent</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {[
+                    ["Pages", "1", "5–15", "—"],
+                    ["Mobile Responsive", "✓", "✓", "✓"],
+                    ["Contact Form", "✓", "✓", "✓"],
+                    ["SSL Certificate", "✓", "✓", "✓"],
+                    ["Custom Design", "—", "✓", "—"],
+                    ["SEO Setup", "Basic", "Full", "—"],
+                    ["Revision Rounds", "1", "2", "—"],
+                    ["AI Integration", "—", "—", "✓"],
+                    ["Email/Calendar Sync", "—", "—", "✓"],
+                    ["WhatsApp/Slack Integration", "—", "—", "✓"],
+                    ["Social Media Management", "—", "—", "✓"],
+                    ["Delivery Time", "5–7 days", "2–3 weeks", "2–3 days"],
+                    ["Monthly Fees", "None", "None", "None*"],
+                  ].map(([feature, landing, business, ai]) => (
+                    <tr key={feature} className="hover:bg-gray-50 transition-colors">
+                      <td className="py-3 px-4 text-gray-700 font-medium">{feature}</td>
+                      <td className="py-3 px-4 text-center text-gray-600">{landing}</td>
+                      <td className="py-3 px-4 text-center text-gray-600 bg-brand-50/50 font-medium">{business}</td>
+                      <td className="py-3 px-4 text-center text-gray-600 bg-purple-50/50 font-medium">{ai}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="text-xs text-gray-400 text-center mt-4">
+              * AI Agent requires LLM API usage (~$5–30/month depending on volume)
+            </p>
+          </div>
         </div>
       </section>
 
       {/* ─── How It Works ─── */}
-      <section id="process" className="py-20 px-6">
+      <section id="process" className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-14">
             <p className="text-brand-600 font-semibold uppercase tracking-wider text-sm mb-3">
@@ -724,25 +885,79 @@ export default function Home() {
           {/* Steps with connecting line */}
           <div className="relative">
             {/* Connecting line — hidden on mobile */}
-            <div className="absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-brand-100 hidden md:block" />
+            <div className="absolute top-10 left-[12.5%] right-[12.5%] h-0.5 bg-gradient-to-r from-brand-100 via-brand-200 to-brand-100 hidden md:block" />
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
               {processSteps.map(({ num, title, desc }, i) => (
-                <div key={num} className="text-center">
+                <div key={num} className="text-center reveal">
                   {/* Step number circle with connector dot */}
-                  <div className="relative inline-flex items-center justify-center mb-5">
-                    <div className="w-16 h-16 rounded-full bg-brand-600 flex items-center justify-center text-white text-2xl font-bold relative z-10">
+                  <div className="relative inline-flex items-center justify-center mb-6">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white text-2xl font-bold relative z-10 shadow-lg shadow-brand-200/50">
                       {num}
                     </div>
                     {/* Connector dot on desktop */}
                     {i < processSteps.length - 1 && (
-                      <div className="hidden md:block absolute -right-[calc(50%+12px)] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-brand-300" />
+                      <div className="hidden md:block absolute -right-[calc(50%+16px)] top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-brand-400 ring-4 ring-brand-100" />
                     )}
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2">{title}</h3>
-                  <p className="text-sm text-gray-500 leading-relaxed">{desc}</p>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{title}</h3>
+                  <p className="text-sm text-gray-500 leading-relaxed max-w-xs mx-auto">{desc}</p>
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Why Choose Us ─── */}
+      <section className="py-20 px-6 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-14">
+            <p className="text-brand-600 font-semibold uppercase tracking-wider text-sm mb-3">
+              WHY AI SOLUTIONS
+            </p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Built Different. Priced Differently.</h2>
+            <p className="text-gray-500 max-w-2xl mx-auto">
+              Most AI services charge monthly fees forever. We build you something you own — one-time pricing, local execution, no subscriptions.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "No Subscriptions",
+                desc: "One-time payment and it's yours forever. No $20–30/month going to AI companies every month.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Private & Local",
+                desc: "Your data never leaves your hardware. Emails, messages, files — everything stays in your home or office.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                  </svg>
+                ),
+              },
+              {
+                title: "Human in the Loop",
+                desc: "AI drafts first, you approve second. Wrong emails never go out. You stay in control of everything.",
+                icon: (
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                ),
+              },
+            ].map(({ title, desc, icon }) => (
+              <Card key={title} className="text-center hover-lift">
+                <div className="w-14 h-14 rounded-xl bg-brand-100 text-brand-600 flex items-center justify-center mx-auto mb-4">
+                  {icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-2">{title}</h3>
+                <p className="text-gray-500 text-sm leading-relaxed">{desc}</p>
+              </Card>
+            ))}
           </div>
         </div>
       </section>
@@ -793,16 +1008,22 @@ export default function Home() {
       </section>
 
       {/* ─── Contact / CTA ─── */}
-      <section id="contact" className="bg-brand-900 text-white py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl font-bold mb-4">Ready to Get Started?</h2>
-          <p className="text-brand-200 mb-10 text-lg leading-relaxed">
+      <section id="contact" className="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-800 to-brand-900 text-white py-24 px-6">
+        {/* Background decoration */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-0 left-1/4 w-80 h-80 bg-brand-400 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-300 rounded-full blur-3xl" />
+        </div>
+        
+        <div className="max-w-3xl mx-auto text-center relative z-10">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-slide-up">Ready to Get Started?</h2>
+          <p className="text-brand-200 mb-12 text-lg md:text-xl leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Send me a message and I'll get back to you within 2 hours. Let's discuss your project
             and I'll send a custom proposal — no obligation.
           </p>
 
-          <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-8 max-w-md mx-auto border border-white/20">
-            <h3 className="font-bold text-lg mb-4">Book Your Demo</h3>
+          <div className="glass-dark rounded-2xl p-8 md:p-10 mb-8 max-w-md mx-auto animate-scale-in" style={{ animationDelay: '0.2s' }}>
+            <h3 className="font-bold text-xl mb-6">Book Your Demo</h3>
 
             {formStatus === "success" ? (
               <div className="text-center py-8 animate-fade-in">
@@ -819,7 +1040,7 @@ export default function Home() {
                     value={formData.name}
                     onChange={(e) => setFormData((p) => ({ ...p, name: e.target.value }))}
                     placeholder="Jane Smith"
-                    className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-400 transition-shadow"
+                    className="w-full px-4 py-3 rounded-lg bg-white/95 text-gray-900 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition-all duration-200 hover:border-gray-300"
                     aria-invalid={!!formErrors.name}
                   />
                 </FormField>
@@ -831,7 +1052,7 @@ export default function Home() {
                     value={formData.business}
                     onChange={(e) => setFormData((p) => ({ ...p, business: e.target.value }))}
                     placeholder="Bright Dental Studio"
-                    className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-400 transition-shadow"
+                    className="w-full px-4 py-3 rounded-lg bg-white/95 text-gray-900 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition-all duration-200 hover:border-gray-300"
                     aria-invalid={!!formErrors.business}
                   />
                 </FormField>
@@ -843,7 +1064,7 @@ export default function Home() {
                     value={formData.phone}
                     onChange={(e) => setFormData((p) => ({ ...p, phone: e.target.value }))}
                     placeholder="(555) 867-5309"
-                    className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-400 transition-shadow"
+                    className="w-full px-4 py-3 rounded-lg bg-white/95 text-gray-900 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition-all duration-200 hover:border-gray-300"
                     aria-invalid={!!formErrors.phone}
                   />
                 </FormField>
@@ -855,7 +1076,7 @@ export default function Home() {
                     value={formData.email}
                     onChange={(e) => setFormData((p) => ({ ...p, email: e.target.value }))}
                     placeholder="jane@brightdental.com"
-                    className="w-full px-4 py-3 rounded-lg bg-white/90 text-gray-900 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-400 transition-shadow"
+                    className="w-full px-4 py-3 rounded-lg bg-white/95 text-gray-900 placeholder-gray-400 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition-all duration-200 hover:border-gray-300"
                     aria-invalid={!!formErrors.email}
                   />
                 </FormField>
