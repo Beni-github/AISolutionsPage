@@ -4,37 +4,39 @@ import "./globals.css";
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#0284c7",
+  themeColor: "#ea580c",
 };
 
 export const metadata: Metadata = {
-  title: "AI Solutions — AI Agents for Business",
+  title: "Fenn — AI Agents & Websites for Business",
   description:
-    "Voice receptionists, personal AI agents, and web development for SMBs. 24/7 AI that answers calls, books appointments, and drives growth.",
+    "Private AI agents and web development for homes and businesses. One-time pricing. Local execution. No subscriptions.",
   keywords: [
-    "AI receptionist",
-    "voice AI",
     "AI agent",
+    "private AI",
     "business automation",
-    "call handling AI",
-    "SMB AI",
-    " appointment booking AI",
+    "AI receptionist",
+    "website development",
+    "AI for business",
   ],
-  authors: [{ name: "AI Solutions" }],
+  authors: [{ name: "Fenn" }],
+  icons: {
+    icon: "/favicon.svg",
+  },
   openGraph: {
-    title: "AI Solutions — AI Agents for Business",
+    title: "Fenn — AI Agents & Websites for Business",
     description:
-      "Voice receptionists, personal AI agents, and web development for SMBs.",
-    url: "https://aisolutions.com",
-    siteName: "AI Solutions",
+      "Private AI agents and web development for homes and businesses.",
+    url: "https://aisolutions-site.vercel.app",
+    siteName: "Fenn",
     locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "AI Solutions — AI Agents for Business",
+    title: "Fenn — AI Agents & Websites for Business",
     description:
-      "Voice receptionists, personal AI agents, and web development for SMBs.",
+      "Private AI agents and web development for homes and businesses.",
   },
   robots: {
     index: true,

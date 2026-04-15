@@ -32,7 +32,7 @@ export async function POST(req: NextRequest) {
         business: business?.trim() || "Not provided",
         service: service || "Not specified",
         message: `Service Interest: ${service || "Not specified"}\n\nMessage:\n${message || "No message provided"}\n\nFrom: ${name.trim()}\nBusiness: ${business?.trim() || "Not provided"}\nPhone: ${phone.trim()}\nEmail: ${email.trim()}`,
-        from_name: "AI Solutions Website",
+        from_name: "Fenn AI Website",
         subject: `New Lead: ${name.trim()} - ${service || "Website Inquiry"}`,
       };
 

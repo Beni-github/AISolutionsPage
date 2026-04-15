@@ -461,10 +461,8 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-              AI
-            </div>
-            <span className="font-bold text-xl text-gray-900">AI Solutions</span>
+            <img src="/fenn.jpg" alt="Fenn the Fox" className="w-9 h-9 rounded-lg object-cover shadow-sm" />
+            <span className="font-bold text-xl text-gray-900">Fenn</span>
           </div>
 
           {/* Desktop nav */}
@@ -515,11 +513,11 @@ export default function Home() {
       )}
 
       {/* ─── Hero ─── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-brand-900 via-brand-700 to-brand-600 text-white py-24 px-6">
+      <section className="relative overflow-hidden bg-gradient-to-br from-fenn-orange via-orange-600 to-fenn-teal text-white py-24 px-6">
         {/* Background decoration */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-brand-400 rounded-full blur-3xl" />
-          <div className="absolute bottom-10 right-10 w-96 h-96 bg-brand-300 rounded-full blur-3xl" />
+          <div className="absolute top-20 left-10 w-72 h-72 bg-fenn-teal rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-10 w-96 h-96 bg-orange-300 rounded-full blur-3xl" />
         </div>
         {/* Grid pattern overlay */}
         <div 
@@ -530,7 +528,10 @@ export default function Home() {
         />
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
-          <div className="inline-flex items-center gap-2 bg-brand-500/20 border border-brand-400/30 rounded-full px-4 py-1.5 text-sm font-medium mb-8 animate-fade-in">
+          <div className="flex justify-center mb-8 animate-fade-in">
+            <img src="/fenn.jpg" alt="Fenn the Fox" className="w-28 h-28 rounded-2xl object-cover shadow-2xl border-4 border-white/20 animate-float" />
+          </div>
+          <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-8 animate-fade-in">
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-400" />
@@ -541,11 +542,11 @@ export default function Home() {
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 animate-slide-up">
             Your Personal AI.
             <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-200 to-brand-100">On Your Desk. No Subscription.</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-200 to-teal-200">On Your Desk. No Subscription.</span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-brand-100 mb-12 max-w-2xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
-            AI Solutions builds websites and deploys private AI agents for homes and businesses.
+          <p className="text-xl md:text-2xl text-orange-100 mb-12 max-w-2xl mx-auto leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
+            Fenn builds websites and deploys private AI agents for homes and businesses.
             One-time pricing. Local execution. Yours forever — no monthly fees.
           </p>
 
@@ -614,7 +615,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <p className="text-brand-600 font-semibold uppercase tracking-wider text-sm mb-3">What We Build</p>
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">AI Solutions for Real Businesses</h2>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Fenn for Real Businesses</h2>
             <p className="text-gray-500 max-w-xl mx-auto">
               Three ways to put AI to work — pick the service that fits your needs.
             </p>
@@ -772,9 +773,9 @@ export default function Home() {
               CLIENT SUCCESS STORIES
             </p>
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Trusted by Real Businesses</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
-              From bakeries to law firms, businesses across the US rely on AI Solutions every day.
-            </p>
+          <p className="text-xl md:text-2xl text-gray-500 max-w-xl mx-auto leading-relaxed">
+            Fenn — AI agents and websites for homes and businesses.
+          </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map(({ quote, author, business, service }, i) => (
@@ -1143,12 +1144,10 @@ export default function Home() {
       <footer className="bg-gray-900 text-gray-400 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-brand-600 rounded flex items-center justify-center text-white font-bold text-xs">
-              AI
-            </div>
-            <span className="font-bold text-white">AI Solutions</span>
+            <img src="/fenn.jpg" alt="Fenn" className="w-6 h-6 rounded object-cover" />
+            <span className="font-bold text-white">Fenn</span>
           </div>
-          <p className="text-sm">© 2026 AI Solutions. All rights reserved.</p>
+          <p className="text-sm">© 2026 Fenn. All rights reserved.</p>
           <div className="flex gap-6 text-sm">
             <a href="/privacy" className="hover:text-white transition-colors">
               Privacy Policy

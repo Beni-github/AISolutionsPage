@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Fenn the Fox - Simple flat icon -->
+  <!-- Face base -->
+  <circle cx="32" cy="32" r="28" fill="#FB923C"/>
+  <!-- Ears -->
+  <polygon points="8,20 16,4 26,22" fill="#FB923C"/>
+  <polygon points="56,20 48,4 38,22" fill="#FB923C"/>
+  <polygon points="11,18 17,8 23,20" fill="#FED7AA"/>
+  <polygon points="53,18 47,8 41,20" fill="#FED7AA"/>
+  <!-- Face cream area -->
+  <ellipse cx="32" cy="36" rx="18" ry="16" fill="#FED7AA"/>
+  <!-- Eyes -->
+  <circle cx="23" cy="30" r="5" fill="white"/>
+  <circle cx="41" cy="30" r="5" fill="white"/>
+  <circle cx="24" cy="31" r="3" fill="#1C1917"/>
+  <circle cx="42" cy="31" r="3" fill="#1C1917"/>
+  <circle cx="25" cy="30" r="1" fill="white"/>
+  <circle cx="43" cy="30" r="1" fill="white"/>
+  <!-- Nose -->
+  <ellipse cx="32" cy="40" rx="4" ry="3" fill="#0D9488"/>
+  <!-- Mouth -->
+  <path d="M28 44 Q32 48 36 44" stroke="#0D9488" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+  <!-- Teal accent mark on forehead -->
+  <ellipse cx="32" cy="16" rx="6" ry="3" fill="#0D9488" opacity="0.6"/>
+</svg>
