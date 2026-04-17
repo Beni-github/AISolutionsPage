@@ -461,7 +461,7 @@ export default function Home() {
       >
         <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <img src="/fenn.jpg" alt="Fenn the Fox" className="w-9 h-9 rounded-lg object-cover shadow-sm" />
+            <img src="/fenn_suit.jpg" alt="Fenn the Fox" className="w-9 h-9 rounded-lg object-cover shadow-sm" />
             <span className="font-bold text-xl text-gray-900">Fenn</span>
           </div>
 
@@ -1017,6 +1017,9 @@ export default function Home() {
         </div>
         
         <div className="max-w-3xl mx-auto text-center relative z-10">
+          <div className="flex justify-center mb-6">
+            <img src="/fenn_suit.jpg" alt="Fenn the Fox" className="w-20 h-20 rounded-xl object-cover shadow-lg border-2 border-white/20" />
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4 animate-slide-up">Ready to Get Started?</h2>
           <p className="text-brand-200 mb-12 text-lg md:text-xl leading-relaxed animate-slide-up" style={{ animationDelay: '0.1s' }}>
             Send me a message and I'll get back to you within 2 hours. Let's discuss your project
@@ -1125,12 +1128,17 @@ export default function Home() {
           <div className="text-brand-300 text-sm space-y-1">
             <p>
               📞{" "}
-              <a href="tel:+15551234567" className="hover:text-white transition-colors">
-                (555) 123-4567
+              <a href="tel:+13058035551" className="hover:text-white transition-colors">
+                305-803-5551
               </a>
-              &nbsp;&nbsp; ✉️{" "}
-              <a href="mailto:hello@aisolutions.com" className="hover:text-white transition-colors">
-                hello@aisolutions.com
+            </p>
+            <p className="text-brand-400/60">
+              5059 Fir St, Blaine, WA 98230
+            </p>
+            <p>
+              ✉️{" "}
+              <a href="mailto:beni@aisolutions.com" className="hover:text-white transition-colors">
+                beni@aisolutions.com
               </a>
             </p>
             <p className="text-brand-400/60 text-xs mt-2">
@@ -1144,7 +1152,7 @@ export default function Home() {
       <footer className="bg-gray-900 text-gray-400 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
-            <img src="/fenn.jpg" alt="Fenn" className="w-6 h-6 rounded object-cover" />
+            <img src="/fenn_suit.jpg" alt="Fenn" className="w-6 h-6 rounded object-cover" />
             <span className="font-bold text-white">Fenn</span>
           </div>
           <p className="text-sm">© 2026 Fenn. All rights reserved.</p>
