@@ -1127,18 +1127,9 @@ export default function Home() {
 
           <div className="text-brand-300 text-sm space-y-1">
             <p>
-              📞{" "}
-              <a href="tel:+13058035551" className="hover:text-white transition-colors">
-                305-803-5551
-              </a>
-            </p>
-            <p className="text-brand-400/60">
-              5059 Fir St, Blaine, WA 98230
-            </p>
-            <p>
               ✉️{" "}
-              <a href="mailto:beni@aisolutions.com" className="hover:text-white transition-colors">
-                beni@aisolutions.com
+              <a href="mailto:AIsolutions@gmail.com" className="hover:text-white transition-colors">
+                AIsolutions@gmail.com
               </a>
             </p>
             <p className="text-brand-400/60 text-xs mt-2">
