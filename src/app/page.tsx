@@ -529,7 +529,7 @@ export default function Home() {
         
         <div className="max-w-4xl mx-auto text-center relative z-10">
           <div className="flex justify-center mb-8 animate-fade-in">
-            <img src="/fenn.jpg" alt="Fenn the Fox" className="w-28 h-28 rounded-2xl object-cover shadow-2xl border-4 border-white/20 animate-float" />
+            <img src="/fenn_suit.jpg" alt="Fenn the Fox" className="w-28 h-28 rounded-2xl object-cover shadow-2xl border-4 border-white/20 animate-float" />
           </div>
           <div className="inline-flex items-center gap-2 bg-white/10 border border-white/20 rounded-full px-4 py-1.5 text-sm font-medium mb-8 animate-fade-in">
             <span className="relative flex h-2 w-2">
